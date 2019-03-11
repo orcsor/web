@@ -1,0 +1,25 @@
+{% extends 'admin.html.twig' %}
+{% block body %}
+    <form method="post">
+        <input type="text" name="item[title]">
+        <textarea name="content" id="editor">
+
+        </textarea>
+        <input type="submit" value="保存">
+    </form>
+{% endblock %}
+{% block javascripts %}
+    <script>
+      ClassicEditor.create(document.querySelector('#editor'), {
+        toolbar: [
+          'heading', 'bold', 'italic', 'blockQuote', 'link',
+          '|', 'bulletedList', 'numberedList',
+          '|', 'imageTextAlternative', 'imageStyle:full', 'imageStyle:side', 'imageUpload',
+          '|', 'undo', 'redo'],
+        ckfinder: {
+          uploadUrl: '/admin/upload'
+        },
+        language: 'zh-cn'
+      })
+    </script>
+{% endblock %}
